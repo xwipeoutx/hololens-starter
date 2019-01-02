@@ -6,7 +6,6 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
 {
     
     [SerializeField] bool disableVuforiaWhenFound = true;
-    [SerializeField] bool hideRootUntilFound = true;
     [SerializeField] Transform worldRoot = null;
     [SerializeField] GameObject lookForTarget = null;
 
@@ -23,11 +22,6 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
         if (lookForTarget != null)
         {
             lookForTarget.SetActive(startVuforia.IsVuforiaEnabled);
-        }
-
-        if (startVuforia.IsVuforiaEnabled && hideRootUntilFound)
-        {
-            worldRoot.gameObject.SetActive(false);
         }
     }
 

@@ -2,6 +2,7 @@
 
 public class PlayerVisual : MonoBehaviour
 {
+    [SerializeField]
     bool isLocalPlayer = false;
 
     public bool IsLocalPlayer
