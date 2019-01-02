@@ -34,4 +34,5 @@ MonoBehaviour:
   - RespawnSpaceship
   - RPCTransformChange
   - RPCToggle
+  - RPCSetAnimatorEnabled
   DisableAutoOpenWizard: 1
