@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6164911772963880996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.175, y: 0.175, z: 0.175}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableVuforiaWhenFound: 1
   worldRoot: {fileID: 0}
+  lookForTarget: {fileID: 0}
 --- !u!114 &6164911772963881021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,8 +94,8 @@ MonoBehaviour:
   mDataSetPath: Vuforia/hololens-starter.xml
   mAspectRatio: 1
   mImageTargetType: 0
-  mWidth: 0.2
-  mHeight: 0.2
+  mWidth: 0.175
+  mHeight: 0.175
 --- !u!33 &6164911772963880998
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -293,6 +293,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &382586115
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'markerMaterial
+
+    38290'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 86f4ced8dfb5438aa49cd17b9359299d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &474687120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &661727531
 Transform:
   m_ObjectHideFlags: 0
@@ -394,13 +422,13 @@ Transform:
   m_Father: {fileID: 171804736}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &899430394
+--- !u!43 &921081741
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ImageTargetMesh23100
+  m_Name: ImageTargetMesh38284
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -629,11 +657,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2105758550, guid: ce51ea3f0e36f2a41a19ca633dd975d3, type: 3}
       propertyPath: viewIdField
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2105758550, guid: ce51ea3f0e36f2a41a19ca633dd975d3, type: 3}
       propertyPath: InstantiationId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce51ea3f0e36f2a41a19ca633dd975d3, type: 3}
@@ -920,34 +948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0decd33ba8702954885a62b5bc1a778e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &2093054297
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'markerMaterial
-
-    27400'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 86f4ced8dfb5438aa49cd17b9359299d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &6164911773937957225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -959,11 +959,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Vuforia
-      objectReference: {fileID: 0}
-    - target: {fileID: 6164911772963880996, guid: c5921a59818005148907e061d5a525dc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6164911772963881016, guid: c5921a59818005148907e061d5a525dc,
         type: 3}
@@ -1020,21 +1015,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6164911772963881016, guid: c5921a59818005148907e061d5a525dc,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.175
-      objectReference: {fileID: 0}
-    - target: {fileID: 6164911772963881016, guid: c5921a59818005148907e061d5a525dc,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.175
-      objectReference: {fileID: 0}
-    - target: {fileID: 6164911772963881016, guid: c5921a59818005148907e061d5a525dc,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.175
-      objectReference: {fileID: 0}
     - target: {fileID: 6164911772963881019, guid: c5921a59818005148907e061d5a525dc,
         type: 3}
       propertyPath: worldRoot
@@ -1045,26 +1025,16 @@ PrefabInstance:
       propertyPath: lookForTarget
       value: 
       objectReference: {fileID: 661727530}
-    - target: {fileID: 6164911772963881019, guid: c5921a59818005148907e061d5a525dc,
-        type: 3}
-      propertyPath: hideRootUntilFound
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6164911772963880998, guid: c5921a59818005148907e061d5a525dc,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 899430394}
+      objectReference: {fileID: 921081741}
     - target: {fileID: 6164911772963880999, guid: c5921a59818005148907e061d5a525dc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2093054297}
-    - target: {fileID: 6164911772963881018, guid: c5921a59818005148907e061d5a525dc,
-        type: 3}
-      propertyPath: useVuforiaInEditor
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 382586115}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5921a59818005148907e061d5a525dc, type: 3}
 --- !u!1001 &7950506671099131009
@@ -1134,15 +1104,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7950506671586940911, guid: 405440e555f15064cb0db8c170376d7d,
-        type: 3}
-      propertyPath: logInfo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7950506671586940911, guid: 405440e555f15064cb0db8c170376d7d,
-        type: 3}
-      propertyPath: spawnPlayerPrefab
-      value: 
-      objectReference: {fileID: 53, guid: 590dc52bb5ac09740adf3f49d2bc7bae, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 405440e555f15064cb0db8c170376d7d, type: 3}

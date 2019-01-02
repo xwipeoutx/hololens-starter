@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomId: 0
   spawnPlayerPrefab: {fileID: 53, guid: 590dc52bb5ac09740adf3f49d2bc7bae, type: 3}
-  logInfo: 1
+  logInfo: 0
