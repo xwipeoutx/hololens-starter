@@ -16,9 +16,9 @@ MonoBehaviour:
     AppIdRealtime: d6a57dfb-ebb7-4346-8e85-6eb7aed7276a
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 
+    AppVersion: v1
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: au
     Server: 
     Port: 0
     Protocol: 0
@@ -33,4 +33,5 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - RPCTransformChange
+  - RPCToggle
   DisableAutoOpenWizard: 1

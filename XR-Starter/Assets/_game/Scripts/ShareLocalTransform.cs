@@ -6,7 +6,7 @@ namespace Scripts
     public class ShareLocalTransform : MonoBehaviour
     {
         [SerializeField] private float checkInterval = 0;
-        [SerializeField] PhotonView view;
+        PhotonView view;
     
         private bool haveDoneInitialSync;
 
@@ -21,7 +21,7 @@ namespace Scripts
 
         void Update()
         {
-            if (checkAfter < Time.time || !PhotonNetwork.InRoom)
+            if (checkAfter > Time.time || !PhotonNetwork.InRoom)
                 return;
 
             var currentPosition = transform.localPosition;
@@ -39,12 +39,13 @@ namespace Scripts
     
         void TransformChange(Vector3 position, Quaternion rotation)
         {
-            view.RPC("RPCDataChange", RpcTarget.Others, position, rotation);
+            view.RPC(nameof(RPCTransformChange), RpcTarget.Others, position, rotation);
         }
     
         [PunRPC]
-        void RPCTransformChange(int aWatch, Vector3 position, Quaternion rotation)
+        void RPCTransformChange(Vector3 position, Quaternion rotation)
         {
+            Debug.Log($"Position now {position}, Rotation now {rotation.eulerAngles}");
             transform.localPosition = previousPosition = position;
             transform.localRotation = previousRotation = rotation;
         }

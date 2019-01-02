@@ -1,18 +1,34 @@
-﻿using UnityEngine;
+﻿using HoloToolkit.Unity;
+using UnityEngine;
 using Vuforia;
 
 public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
 {
+    
     [SerializeField] bool disableVuforiaWhenFound = true;
+    [SerializeField] bool hideRootUntilFound = true;
     [SerializeField] Transform worldRoot = null;
+    [SerializeField] GameObject lookForTarget = null;
 
+    StartVuforia startVuforia;
     TrackableBehaviour trackable;
 
     void Start()
     {
+        startVuforia = GetComponent<StartVuforia>();
         trackable = GetComponent<TrackableBehaviour>();
         if (trackable != null)
             trackable.RegisterTrackableEventHandler(this);
+        
+        if (lookForTarget != null)
+        {
+            lookForTarget.SetActive(startVuforia.IsVuforiaEnabled);
+        }
+
+        if (startVuforia.IsVuforiaEnabled && hideRootUntilFound)
+        {
+            worldRoot.gameObject.SetActive(false);
+        }
     }
 
     void OnDestroy()
@@ -42,6 +58,7 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
         {
             worldRoot.transform.position = transform.position;
             worldRoot.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+            worldRoot.gameObject.SetActive(true);
         }
 
         if (disableVuforiaWhenFound)
@@ -53,12 +70,29 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
 #else
             Tracker imageTracker = TrackerManager.Instance.GetTracker<ObjectTracker>();
             if (imageTracker != null)
+            {
                 imageTracker.Stop();
+            }
 #endif
+        }
+
+        if (lookForTarget != null)
+        {
+            lookForTarget.SetActive(false);
         }
     }
 
     void OnTrackingLost()
     {
+        Tracker imageTracker = TrackerManager.Instance.GetTracker<ObjectTracker>();
+        if (imageTracker != null)
+        {
+            imageTracker.Start();
+        }
+        
+        if (lookForTarget != null)
+        {
+            lookForTarget.SetActive(true);
+        }
     }
 }
