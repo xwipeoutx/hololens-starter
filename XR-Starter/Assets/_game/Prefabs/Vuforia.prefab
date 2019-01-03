@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6164911772963881016}
-  - component: {fileID: 6164911772963881018}
-  - component: {fileID: 6164911772963881019}
+  - component: {fileID: 6164911773937957227}
   - component: {fileID: 6164911772963881021}
   - component: {fileID: 6164911772963881017}
   - component: {fileID: 6164911772963880998}
@@ -36,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6164911772963881018
+--- !u!114 &6164911773937957227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,25 +44,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6164911772963880996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6291244ec9444a5ca94a288b0b4cf267, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c503ec39c0b48b58315f7ea7e3f2e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useVuforiaInEditor: 0
---- !u!114 &6164911772963881019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6164911772963880996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e8d1fc5ab84db5b4278399765bfc66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableVuforiaWhenFound: 1
   worldRoot: {fileID: 0}
-  lookForTarget: {fileID: 0}
+  instructions: {fileID: 0}
+  editorMode: 0
+  hololensMode: 1
+  wmrMode: 0
+  androidMode: 3
+  iosMode: 3
 --- !u!114 &6164911772963881021
 MonoBehaviour:
   m_ObjectHideFlags: 0
