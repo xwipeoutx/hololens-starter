@@ -1,10 +1,12 @@
-﻿using HoloToolkit.Unity;
+﻿using HoloToolkit.Unity.InputModule;
 using UnityEngine;
 using Vuforia;
+#if WINDOWS_UWP
+using UnityEngine.XR.WSA;
+#endif
 
 public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
 {
-    
     [SerializeField] bool disableVuforiaWhenFound = true;
     [SerializeField] Transform worldRoot = null;
     [SerializeField] GameObject lookForTarget = null;
@@ -18,7 +20,7 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
         trackable = GetComponent<TrackableBehaviour>();
         if (trackable != null)
             trackable.RegisterTrackableEventHandler(this);
-        
+
         if (lookForTarget != null)
         {
             lookForTarget.SetActive(startVuforia.IsVuforiaEnabled);
@@ -50,9 +52,18 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
     {
         if (worldRoot != null)
         {
-            worldRoot.transform.position = transform.position;
-            worldRoot.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-            worldRoot.gameObject.SetActive(true);
+#if WINDOWS_UWP
+        if (worldRoot.GetComponent<WorldAnchor>() != null)
+        {
+            DestroyImmediate(worldRoot.GetComponent<WorldAnchor>());
+        }
+            
+        worldRoot.transform.position = transform.position;
+        worldRoot.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        worldRoot.gameObject.SetActive(true);
+
+        worldRoot.gameObject.AddComponent<WorldAnchor>();
+#endif
         }
 
         if (disableVuforiaWhenFound)
@@ -61,6 +72,7 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
 			trackable.enabled = false;
 			Destroy(trackable);
 			VuforiaBehaviour.Instance.enabled = false;
+    
 #else
             Tracker imageTracker = TrackerManager.Instance.GetTracker<ObjectTracker>();
             if (imageTracker != null)
@@ -83,10 +95,18 @@ public class EstablishOrigin : MonoBehaviour, ITrackableEventHandler
         {
             imageTracker.Start();
         }
-        
+
         if (lookForTarget != null)
         {
             lookForTarget.SetActive(true);
         }
+
+
+#if WINDOWS_UWP
+        if (worldRoot != null && worldRoot.GetComponent<WorldAnchor>() != null)
+        {
+            DestroyImmediate(worldRoot.GetComponent<WorldAnchor>());
+        }
+#endif
     }
 }
