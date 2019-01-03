@@ -49,11 +49,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldRoot: {fileID: 0}
   instructions: {fileID: 0}
-  editorMode: 0
-  hololensMode: 1
-  wmrMode: 0
-  androidMode: 3
-  iosMode: 3
+  positionWhenDisabled: {x: 0, y: -0.2, z: 1}
+  editorConfig:
+    isEnabled: 0
+    isTransparent: 0
+    controlsCamera: 0
+    disableOnFind: 1
+  hololensConfig:
+    isEnabled: 1
+    isTransparent: 1
+    controlsCamera: 0
+    disableOnFind: 1
+  wmrConfig:
+    isEnabled: 0
+    isTransparent: 0
+    controlsCamera: 0
+    disableOnFind: 0
+  androidConfig:
+    isEnabled: 1
+    isTransparent: 0
+    controlsCamera: 1
+    disableOnFind: 0
+  iosConfig:
+    isEnabled: 1
+    isTransparent: 0
+    controlsCamera: 1
+    disableOnFind: 0
 --- !u!114 &6164911772963881021
 MonoBehaviour:
   m_ObjectHideFlags: 0

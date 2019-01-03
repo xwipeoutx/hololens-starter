@@ -6,8 +6,8 @@ namespace Scripts
     {
         void Awake()
         {
-            string objName = "SceneRoot";
-            GameObject root = GameObject.Find(objName);
+            var objName = "SceneRoot";
+            var root = GameObject.Find(objName);
             if (root == null)
                 Debug.LogError("Could not find a " + objName + " object!");
             else
