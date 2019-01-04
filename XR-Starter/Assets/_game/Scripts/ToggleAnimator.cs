@@ -24,7 +24,14 @@ public class ToggleAnimator : MonoBehaviour, IInputClickHandler, IInRoomCallback
 
     private void SetAnimatorEnabled(bool isEnabled)
     {
-        view.RPC(nameof(RPCSetAnimatorEnabled), RpcTarget.All, isEnabled);
+        if (PhotonNetwork.InRoom)
+        {
+            view.RPC(nameof(RPCSetAnimatorEnabled), RpcTarget.All, isEnabled);
+        }
+        else
+        {
+            RPCSetAnimatorEnabled(isEnabled);   
+        }
     }
 
     public void OnPlayerEnteredRoom(Player newPlayer)

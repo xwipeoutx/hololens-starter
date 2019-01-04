@@ -50,7 +50,7 @@ public class VuforiaConfigurator : MonoBehaviour, ITrackableEventHandler
     [SerializeField] Transform worldRoot = null;
     [SerializeField] GameObject instructions = null;
 
-    [Header("Vuforia Mode")] [SerializeField]
+    [Header("Vuforia Mode")] [SerializeField] [Tooltip("Camera-relative position when disabled")]
     private Vector3 positionWhenDisabled = Vector3.zero;
 
     [SerializeField] VuforiaDeviceConfig editorConfig = VuforiaDeviceConfig.Disabled;
@@ -85,8 +85,6 @@ public class VuforiaConfigurator : MonoBehaviour, ITrackableEventHandler
 
         if (!activeConfig.isEnabled)
         {
-            worldRoot.transform.position = positionWhenDisabled;
-
             DisableVuforia();
             TurnOffInstructions();
         }
@@ -141,6 +139,20 @@ public class VuforiaConfigurator : MonoBehaviour, ITrackableEventHandler
         }
 
         Debug.Log($"Vuforia Config: {activeConfig}");
+    }
+
+    void Start()
+    {
+        // Done in Start because main camera has not yet been put in place at Awake time
+        if (!activeConfig.isEnabled)
+        {
+            var forward = Camera.main.transform.forward;
+            forward.y = 0;
+            forward.Normalize();
+            var direction = Quaternion.Euler(forward);
+
+            worldRoot.transform.position = Camera.main.transform.position + direction * positionWhenDisabled;
+        }
     }
 
     void OnDestroy()

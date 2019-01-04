@@ -30,25 +30,98 @@ Install the following - you can skip Android/IOS/UWP things depending on what pl
 
 ## Usage
 
+### Cloning and opening
+
 * Clone this repo
 * Open Unity Hub
 * Click "Open"
 * Navigate to `.\XR_Starter` and open
 * Choose `2018.3.0f2` version when opening
 * Wait for things to compile
+
+### Use a better layout
+
+The default Unity layout is bad.  Go to `Window` -> `Layouts` -> `Tall` for a better one.
+
+I'd also suggest adjusting the following
+
+* Change `Project` to be `One Column Layout` using the view menu in the top right
+* Seperate the `Scene` tab from the `Game` tab so you can see them both at once
+
+### Open the right scene
+
+When you first launch, there's a good chance it will just be an empty scene
+
+* In the inspector, navigate to `_game`, `Scene`, `Main` and double click it
+* Look around the scene by double-clicking game objects in the inspector to focus them, or holding down your `RMB` in the scene window and using `WASD` for movement
+
+### Set up a unique room id for sharing
+
 * Select the `Sharing` GameObject
 * Enter a unique value for your own `Room Id` - if you're in a team, use the same Room Id.
 
 ### Targeting your platform
 
-In Unity
+Unity will almost certainly be targeting PC standalone initially - which won't work for the sort of app we're building (Hololens or phone or whatever)
+
+Switch to the appropriate platform:
 
 * `File`, `Build Settings`
 * Select:
   * Mixed Reality: `Universal Windows Platform`
-  * Android: Andorid
-  * iOS: iOS
+  * Android: `Android`
+  * iOS: `iOS`
 * Select `Switch Platform`
+
+### Test in the editor
+
+Hit the `Play` button to start running it in the editor.  This uses MRTK's camera movement and interaction shims to simulate the Hololens and hands.
+
+Use the following controls
+
+* Right-Click drag: Look around
+* WASD: While RMB is down, flies around
+* Shift/Space: Bring virtual hands into view with finger up
+* Click: Bring finger down
+
+TLDR: hold down RMB and use WASD.  When you want to air tap, shift+click LMB
+
+Regarding gameplay
+
+* Air-tapping the cube will toggle it on or off (shared to all clients)
+* All players in the same room will be visible as small avatars that move around
+
+## Check your project builds
+
+### Mixed Reality (Hololens or WMR occluded devices)
+
+* Ensure your platform is set to UWP in Build Settings
+* In the menu, choose `Mixed Reality Toolkit`, `Build Window`
+* Click "Build All"
+
+**Note**: If you have issues here, ensure you are building in `Release` mode for `x86` and targeting `Direct3D` (not `XAML`)
+
+Your console should report success
+
+### Android
+
+* Ensure your platform is set to Android in Build Settings
+* In build settings, select `Build`
+
+This should give you an `.apk` file where you specify.
+
+Let me know if you get "Build and Run" working, but I had to `adb install foo.apk` to get it installed on my device.
+
+**Note**: Ensure ARCore is installed on your phone/tablet, to get much better tracking after the marker is found
+
+### IOS
+
+* Ensure your platform is set to Android in Build Settings
+* In build settings, select `Build`
+
+This will make an xcode project in the folder you specify.
+
+You're on your own now, because iOS is not my wheelhouse
 
 ## Project structure
 
@@ -78,14 +151,15 @@ There are a couple exceptions, otherwise it would be too easy.
 
 ## Overview
 
+The initial scene is simple - a spinning cube (toggleable by clicking it) 
+
 ### Vuforia
 
 Vuforia is configured entirely in the `Vuforia` prefab, along with the standard `VuforiaConfiguration` asset.
 
 A couple scripts are involved to get it all going
 
-* `StartVuforia` - This configures Vuforia appropriately for the target platform (See through for hololens, hand held otherwise), and disabled it in the editor.
-* `EstablishOrigin` - This is the main workhorse for the scene placement - all it really does though is sets the position and rotation of the scene root with whatever is reported by Vuforia, and then (optionally) turns off Vuforia.  This also shows and hides the instructions.
+* `VuforiaConfigurator` - This configures Vuforia appropriately for the target platform options, and handles setting the scene root based on the marker.
 * `TurnOff Behaviour` - Simply turns off the renderer for the image target.  Out of the box Vuforia, why deviate from the norm?
 
 ### Sharing
