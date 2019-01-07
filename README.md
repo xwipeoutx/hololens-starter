@@ -24,8 +24,12 @@ Install the following - you can skip Android/IOS/UWP things depending on what pl
   * UWP Build Support (.NET)
   * Windows Build Support (IL2CPP)
 * Visual Studio 2017 
-* Windows 10 SDK (Tested with `10.0.17134.0`)
-* Android SDK (test with `android-28`)
+* Include the following workloads (not 100% sure on these...)
+  * Universal Windows Platform development
+  * .NET desktop development
+  * .NET Core cross-platform development
+* Windows 10 SDK (tested with `10.0.17134.0`)
+* Android SDK (tested with `android-28`)
 * XCode or whatever you iOS folk use
 
 ## Usage
