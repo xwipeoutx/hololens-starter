@@ -49,15 +49,22 @@ The default Unity layout is bad.  Go to `Window` -> `Layouts` -> `Tall` for a be
 
 I'd also suggest adjusting the following
 
-* Change `Project` to be `One Column Layout` using the view menu in the top right
+* Change the `Project` tab to be `One Column Layout` using the view menu (hamburger) in the top right
+![](https://i.imgur.com/UUWqy6b.png)
 * Seperate the `Scene` tab from the `Game` tab so you can see them both at once
+![](https://i.imgur.com/gwFan1H.png)
 
 ### Open the right scene
 
 When you first launch, there's a good chance it will just be an empty scene
 
-* In the inspector, navigate to `_game`, `Scene`, `Main` and double click it
+* In the inspector, navigate to `_game`, `Scene`, `Main` and double click it 
+
+![](https://i.imgur.com/JSSxQMJ.png)
+
 * Look around the scene by double-clicking game objects in the inspector to focus them, or holding down your `RMB` in the scene window and using `WASD` for movement
+
+![](https://i.imgur.com/BfkP3zw.png)
 
 ### Set up a unique room id for sharing
 
