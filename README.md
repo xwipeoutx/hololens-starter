@@ -62,13 +62,14 @@ When you first launch, there's a good chance it will just be an empty scene
 
 ![](https://i.imgur.com/JSSxQMJ.png)
 
-* Look around the scene by double-clicking game objects in the inspector to focus them, or holding down your `RMB` in the scene window and using `WASD` for movement
-
-![](https://i.imgur.com/BfkP3zw.png)
+* Look around the scene by double-clicking game objects in the inspector to focus them, or holding down your `RMB` in the scene window and using `WASD` for movement whilst it is held down
 
 ### Set up a unique room id for sharing
 
 * Select the `Sharing` GameObject
+
+![](https://i.imgur.com/xmYy2RA.png)
+
 * Enter a unique value for your own `Room Id` - if you're in a team, use the same Room Id.
 
 ### Targeting your platform
