@@ -58,6 +58,9 @@ namespace HoloToolkit.Unity
                 Destroy(gameObject);
                 return;
             }
+#else
+            Destroy(gameObject);
+            return;
 #endif
 
             base.Awake();
