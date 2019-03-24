@@ -15,7 +15,7 @@ Includes
 
 Install the following - you can skip Android/IOS/UWP things depending on what platform you're targetting
 
-* Unity 2018.3.0f2 (Tip: Use the [Unity Hub](https://unity3d.com/get-unity/download) or [Unity download archive](https://unity3d.com/get-unity/download/archive))
+* Unity 2018.3.9f1 (Tip: Use the [Unity Hub](https://unity3d.com/get-unity/download) or [Unity download archive](https://unity3d.com/get-unity/download/archive))
 * Include the following Unity components when installing (if relevant for your platform)
   * Vuforia
   * Android Build Support
