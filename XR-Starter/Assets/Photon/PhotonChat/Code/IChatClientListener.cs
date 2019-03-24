@@ -85,5 +85,19 @@ namespace Photon.Chat
         /// <param name="gotMessage">True if the status contains a message you should cache locally. False: This status update does not include a message (keep any you have).</param>
         /// <param name="message">Message that user set.</param>
         void OnStatusUpdate(string user, int status, bool gotMessage, object message);
+
+        /// <summary>
+        /// A user has subscribed to a public chat channel
+        /// </summary>
+        /// <param name="channel">Name of the chat channel</param>
+        /// <param name="user">UserId of the user who subscribed</param>
+        void OnUserSubscribed(string channel, string user);
+
+        /// <summary>
+        /// A user has unsubscribed from a public chat channel
+        /// </summary>
+        /// <param name="channel">Name of the chat channel</param>
+        /// <param name="user">UserId of the user who unsubscribed</param>
+        void OnUserUnsubscribed(string channel, string user);
     }
 }

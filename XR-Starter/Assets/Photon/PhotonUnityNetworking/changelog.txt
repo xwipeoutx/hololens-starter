@@ -1,5 +1,60 @@
 PUN 2 Change Log
 
+
+v2.8.1 (21. March 2019)
+Fixed: Problem with assembly definition and WebSockets usage.
+Removed: Unused code (fixing the warning about that).
+Note: This version has minimal changes that don't affect the gameplay, so we decided not to change the version in PUN (which would separate players) or in the Asset Store (which triggers a mail).
+v2.8 (15. March 2019)
+Changed: Unity 5.6.6f2 is now the minimum supported version. Older versions won't run in the most up to date MacOS anymore, so we decided to drop those.
+Added: VIVEPORT Authentication provider. See: https://www.photonengine.com/en-us/viveport and docs: https://doc.photonengine.com/en-us/arvr/current/connection-and-authentication/authentication/viveport-auth
+Changed: The cached "best region" is cleared whenever a region's pinging finishes. This fixes a potential issue when the BestRegion value is used before the pinging is done. Then, you end up with a wrong selection.
+Added: When connecting to a Master Server directly (likely a Photon Server / OnPremise) without a UserId, PUN will now set a GUID. This reflects the behaviour of the Photon Cloud and helps differentiate clients by a UserId in matchmaking.
+Changed: When connecting to a Master Server directly (likely a Photon Server / OnPremise) with WebSockets, PUN now automatically uses a compatible serialization protocol (GpBinaryV16).
+Changed: The callbacks OnRoomPropertiesUpdate and OnPlayerPropertiesUpdate are not called when/before entering a room. It was the case whenever properties change, which is also the case when the Realtime API constructs the room or the player (with properties). Wait for OnJoinedRoom and check properties the first time when that's called.
+Updated: Photon3Unity3d.dll library to 4.1.2.10, rev5023.
+
+
+v2.7 (13. February 2019)
+Fixed: Offline mode. Custom properties are now set properly.
+Renamed: PhotonNetwork.BackgroundTimeout is now PhotonNetwork.KeepAliveInBackground.
+Fixed: PhotonNetwork.KeepAliveInBackground now sets the ConnectionHandler.KeepAliveInBackground, which actually affects the background keep-alive.
+Fixed: A crash problem on Nintendo Switch. Setting a Thread.Name caused a crash in some Unity exports. We work around this by simply not naming internal threads.
+Updated: Photon3Unity3d.dll library to 4.1.2.9, rev4985.
+Photon Chat:
+    Added: Client API for Max Subscribers and Publish Subscribers features inside public channels.
+
+v2.6 (25th January 2019)
+Fixed: Offline custom properties are now set even if ExpectedProperties is set, as there is only one source for setting properties when in offline mode. 
+Fixed: Switching Offline mode off now properly cleans up room content.
+Fixed: Infinite for-loop when enabling all Interest Groups by using new byte[0] as parameter for the SetInterestGroups function.
+Fixed: The PhotonView attribute AddComponentMenu could not have a shortcut (in 2018.3) for unknown reasons. It was causing compile errors in some cases, so the shortcut (&v) is gone.
+Fixed: Rpc list was not showing in the ServerSettings Inspector.
+Fixed: Inspector for ServerSettings no longer closes due to recompile.
+Added: Tooltips for all fields in the Photon Server Settings. Each entry is now at least somewhat explained. More in the docs.
+Changed: PhotonNetwork.WebRPC can set AuthCookie webflag, which is used for WebHooks.
+Changed: PhotonNetwork.CurrentLobby and LoadBalancingClient.CurrentLobby are now readonly. The lobby must be defined by joining one or via the parameter when creating rooms. As before: You don't have to join a lobby to do matchmaking via a lobby.
+Changed: SupportLogger now makes use of the new ServerIpAddress value in the PhotonPeer.
+Changed: Added a local timestamp to the SupportLogger: it now logs [Time.unscaledTime] in front of each log.
+Changed: SupportLogger will also log the "basics" when it got the RegionsList from the Name Server (and it now logs the NS IP-address).
+Changed: The log output when Join/Create failed. Now it also logs the State (which is the primary value for IsConnectedAndReady). Better for debugging.
+Changed: PhotonNetwork.time is now cached per frame (based on Unity's frameCount value). This applies the same time-value for the whole frame, no matter when Update() gets called on a specific object. This might avoid some judder when syncing objects.
+Changed: The property "timestamp" is obsolete (as name) in PhotonMessageInfo. There is now a SentServerTimestamp integer and a SentServerTime double. It makes sense to use the integer to calculate delta-times in milliseconds.
+Added: Callback OnDisconnected() to connection-exception handling for "Exception in Receive". Also for: "Max CCU Reached" (probably not used).
+Added: Note in reference doc, that "Exception" for receive is typical if you connect a local Photon on Windows but the server isn't running/available.
+Fixed: SetInterestGroup() for Offline mode. If offline, it can simply skip the call to OpChangeGroups and avoid some log spamming.
+Added: ServerSettings now let you open the dashboard directly for each types of ids, and let you open the whiteList region editor as well.
+Fixed: PhotonEditorUtils.IsPrefab() is fixed for 2018.3 onwards, it now takes in consideration both assets and prefab editing stage when checking.
+Changed: Setting PhotonNetwork.PrefabPool to null now logs a warning and default to the DefaultPool class.
+Fixed: Problems with "Best Region" selection on Nintendo Switch. Best Region now works, even if all available Photon Cloud regions need to be pinged.
+Internal: PingMono class now keeps one Socket instance until discarded.
+Internal: PingMono uses Socket.Poll() now, instead of .Available (which might also be the cause why this is Switch compatible now).
+Internal: PUN now sends PhotonView-updates via a re-used List<object>. A second list was added to the PhotonView, so they can be used alternating and without copying values before sending them.
+Changed: ExecuteRpc() to not always create argument- and argument-type-list. This is a minor optimization.
+Changed: ExecuteRpc() check of arguments versus a method's parameters.
+Changed: RPC() to re-use the event-content Hashtable (and clear it instead of re-creating it every time).
+Updated: Photon3Unity3d.dll library to rev4954.
+
 v2.5 (20th November 2018)
 Fixed: The RoomOption CleanupCacheOnLeave is now correctly set per room (if set for creation of the room). This bug caused a server-side cleanup of Instantiate-events, buffered RPCs and other buffered events, despite a different setting in the options. This messed with a game's state, if you wanted to keep networked objects when players leave.
 Fixed: Regression during PhotoView cleanup leading to loss of viewId in OnDisable and OnDestroy calls. Now OnDisable and OnDestroy can access the viewID. Pooling the game object will set the new viewID before OnEnable is called.
@@ -11,7 +66,6 @@ Changed: The Realtime API no longer sends the actor properties on a rejoin. The 
 Fixed: Support for 2018.3 and newer prefab workflow to not show/deal the viewId field when editing a prefab.
 Fixed: ViewID assignment algorithm when reaching the max view ID value.
 Fixed: Removed harmless "duplicate"-warnig inside the DemoHub context. Now eventSystem is only created if needed.
-
 
 v2.4 (24th October 2018)
 Fixed: Duplicated Instantiation Events when using PhotonNetwork.ReconnectAndRejoin: when a client rejoins a room, his server-side cached Instantiation Events get duplicated, resulting in duplicated objects. This has been fixed.

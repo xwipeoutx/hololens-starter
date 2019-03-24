@@ -560,7 +560,17 @@ public class ChatGui : MonoBehaviour, IChatClientListener
 		}
 	}
 
-	public void AddMessageToSelectedChannel(string msg)
+    public void OnUserSubscribed(string channel, string user)
+    {
+        Debug.LogFormat("OnUserSubscribed: channel=\"{0}\" userId=\"{1}\"", channel, user);
+    }
+
+    public void OnUserUnsubscribed(string channel, string user)
+    {
+        Debug.LogFormat("OnUserUnsubscribed: channel=\"{0}\" userId=\"{1}\"", channel, user);
+    }
+
+    public void AddMessageToSelectedChannel(string msg)
 	{
 		ChatChannel channel = null;
 		bool found = this.chatClient.TryGetChannel(this.selectedChannelName, out channel);

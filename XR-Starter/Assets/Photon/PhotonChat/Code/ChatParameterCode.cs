@@ -48,5 +48,16 @@ namespace Photon.Chat
 
         /// <summary>(21) WebFlags object for changing behaviour of webhooks from client.</summary>
         public const byte WebFlags = 21;
+
+        /// <summary>(22) Properties of channel or user.</summary>
+        /// <remarks>
+        /// In event <see cref="ChatEventCode.Subscribe"/> it's always channel properties.
+        /// </remarks>
+        public const byte Properties = 22;
+        /// <summary>(23) Array of UserIds of users already subscribed to a channel.</summary>
+        /// <remarks>Used in Subscribe event when PublishSubscribers is enabled.
+        /// Does not include local user who just subscribed.
+        /// Maximum length is (<see cref="ChatChannel.MaxSubscribers"/> - 1).</remarks>
+        public const byte ChannelSubscribers = 23;
     }
 }

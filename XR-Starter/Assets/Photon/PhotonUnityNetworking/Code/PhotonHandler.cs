@@ -62,7 +62,7 @@ namespace Photon.Pun
 
             this.UpdateInterval = 1000 / PhotonNetwork.SendRate;
             this.UpdateIntervalOnSerialize = 1000 / PhotonNetwork.SerializationRate;
-
+            
             this.StartFallbackSendAckThread();
         }
 
@@ -77,8 +77,6 @@ namespace Photon.Pun
         }
 
 
-        #if UNITY_5_4_OR_NEWER
-
         protected void Start()
         {
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
@@ -87,17 +85,6 @@ namespace Photon.Pun
                 PhotonNetwork.SetLevelInPropsIfSynced(SceneManagerHelper.ActiveSceneName);
             };
         }
-
-        #else
-
-        /// <summary>Called by Unity after a new level was loaded.</summary>
-        protected void OnLevelWasLoaded(int level)
-        {
-            PhotonNetwork.NewSceneLoaded();
-            PhotonNetwork.SetLevelInPropsIfSynced(SceneManagerHelper.ActiveSceneName);
-        }
-
-        #endif
 
 
         /// <summary>Called by Unity when the application is closed. Disconnects.</summary>

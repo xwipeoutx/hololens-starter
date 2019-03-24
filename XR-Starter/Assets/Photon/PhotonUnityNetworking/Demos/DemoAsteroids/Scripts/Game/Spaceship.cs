@@ -154,7 +154,7 @@ namespace Photon.Pun.Demo.Asteroids
         [PunRPC]
         public void Fire(Vector3 position, Quaternion rotation, PhotonMessageInfo info)
         {
-            float lag = (float) (PhotonNetwork.Time - info.timestamp);
+            float lag = (float) (PhotonNetwork.Time - info.SentServerTime);
             GameObject bullet;
 
             /** Use this if you want to fire one bullet at a time **/
