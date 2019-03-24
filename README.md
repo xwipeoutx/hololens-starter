@@ -15,7 +15,7 @@ Includes
 
 Install the following - you can skip Android/IOS/UWP things depending on what platform you're targetting
 
-* Unity 2018.3.0f2 (Tip: Use the [Unity Hub](https://unity3d.com/get-unity/download))
+* Unity 2018.3.0f2 (Tip: Use the [Unity Hub](https://unity3d.com/get-unity/download) or [Unity download archive](https://unity3d.com/get-unity/download/archive))
 * Include the following Unity components when installing (if relevant for your platform)
   * Vuforia
   * Android Build Support
@@ -28,8 +28,8 @@ Install the following - you can skip Android/IOS/UWP things depending on what pl
   * Universal Windows Platform development
   * .NET desktop development
   * .NET Core cross-platform development
-* Windows 10 SDK (tested with `10.0.17134.0`)
-* Android SDK (tested with `android-28`)
+* [Windows 10 SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk) (tested with `10.0.17134.0`)
+* [Android SDK](https://developer.android.com/studio/) (tested with `android-28`)
 * XCode or whatever you iOS folk use
 
 ## Usage
@@ -39,7 +39,7 @@ Install the following - you can skip Android/IOS/UWP things depending on what pl
 * Clone this repo
 * Open Unity Hub
 * Click "Open"
-* Navigate to `.\XR_Starter` and open
+* Navigate to `.\XR-Starter` and open
 * Choose `2018.3.0f2` version when opening
 * Wait for things to compile
 
