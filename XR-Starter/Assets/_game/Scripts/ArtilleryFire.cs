@@ -6,6 +6,8 @@ public class ArtilleryFire : MonoBehaviour
 {
     public GameObject bullet;
     public Transform turret;
+    public AudioSource audioSource;
+    public ParticleSystem particleSystem;
 
     public float bulletSpeed = 0.5f;
     public float timeBetweenShots = 1;
@@ -31,6 +33,8 @@ public class ArtilleryFire : MonoBehaviour
     private IEnumerator FireBullet()
     {
         var newBullet = Instantiate(bullet, transform);
+        audioSource.Play();
+        particleSystem.Play();
 
         var rigidBody = newBullet.GetComponent<Rigidbody>();
         rigidBody.velocity = turret.forward * bulletSpeed;

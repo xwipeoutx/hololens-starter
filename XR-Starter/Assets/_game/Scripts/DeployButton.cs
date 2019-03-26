@@ -19,7 +19,6 @@ public class DeployButton : MonoBehaviour, IInputClickHandler
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void OnInputClicked(InputClickedEventData eventData)

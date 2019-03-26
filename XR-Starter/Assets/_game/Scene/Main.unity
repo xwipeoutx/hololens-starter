@@ -370,6 +370,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deployment Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 4345222748485015331, guid: 315e520d4c7fbc74e8454a87f8b65bba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4345222748485015330, guid: 315e520d4c7fbc74e8454a87f8b65bba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -429,6 +434,10 @@ PrefabInstance:
       propertyPath: sceneRoot
       value: 
       objectReference: {fileID: 1200917456}
+    - target: {fileID: 715050262, guid: 315e520d4c7fbc74e8454a87f8b65bba, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1581479544}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 315e520d4c7fbc74e8454a87f8b65bba, type: 3}
 --- !u!1001 &474687120
@@ -823,6 +832,12 @@ PrefabInstance:
 --- !u!1 &1581479543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4345222748485015331, guid: 315e520d4c7fbc74e8454a87f8b65bba,
+    type: 3}
+  m_PrefabInstance: {fileID: 453856247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1581479544 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6072014405116671122, guid: 315e520d4c7fbc74e8454a87f8b65bba,
     type: 3}
   m_PrefabInstance: {fileID: 453856247}
   m_PrefabAsset: {fileID: 0}
